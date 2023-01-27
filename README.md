@@ -3,8 +3,8 @@ Further info can be found on github: [42-AI_bootcamp_python](https://github.com/
 
 ## module00
 
-(subject)[https://github.com/ikersojo/42-AI_bootcamp_python/blob/main/module00/subject/module00.pdf]
+[subject](https://github.com/ikersojo/42-AI_bootcamp_python/blob/main/module00/subject/module00.pdf)
 
-(notes)[https://github.com/ikersojo/42-AI_bootcamp_python/blob/main/module00/module00_notes.md]
+[notes](https://github.com/ikersojo/42-AI_bootcamp_python/blob/main/module00/module00_notes.md)
 
 ---
