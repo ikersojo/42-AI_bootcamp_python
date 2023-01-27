@@ -2,7 +2,7 @@
 ---
 # ex00: $PATH
 ## basic info
-Python Version: 3.7.x (recommended)
+Python Version: 3.7.x (recommended) --> not available in conda anymore, version 3.8 used instead (oldest one).
 
 Norm: [PEP 8 standard](https://www.python.org/dev/peps/pep-0008/)
 
