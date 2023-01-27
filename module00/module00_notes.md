@@ -17,14 +17,17 @@ Norminette: [pycodestyle](https://pypi.org/project/pycodestyle)
 MYPATH="/goinfre/$USER/miniconda3"
 curl -LO "https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
 sh Miniconda3-latest-MacOSX-x86_64.sh -b -p $MYPATH
-```
-### install conda in my laptop (macbook pro M1pro - Monterey)
 
-
-### Config conda
-```
 $MYPATH/bin/conda init zsh
 $MYPATH/bin/conda config --set auto_activate_base false
+source ~/.zshrc
+```
+
+### install conda in my laptop (macbook pro M1pro - Monterey)
+```
+brew install --cask miniconda
+conda init zsh
+conda config --set auto_activate_base false
 source ~/.zshrc
 ```
 
@@ -33,6 +36,7 @@ create the environment:
 ```
 conda create --name 42AI-$USER python=3.7 jupyter pandas pycodestyle numpy
 ```
+
 and check the environment:
 ```
 conda info --envs
@@ -42,6 +46,11 @@ python -V
 python -c "print('Hello World!')"
 ```
 
+to go back to base:
+```
+conda deactivate
+```
+
 ## answers.txt
 Find the commands to:
 - Output a list of installed packages and their versions.
@@ -49,21 +58,3 @@ Find the commands to:
 - Remove the package numpy.
 - (Re)install the package numpy.
 - Freeze your python packages and their versions in a requirements.txt file you have to turn-in.
-
-
-
----
-# ex01
-
----
-# ex02
-
----
-# ex03
-
----
-# ex04
-
----
-# ex05
-
