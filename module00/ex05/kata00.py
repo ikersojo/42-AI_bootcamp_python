@@ -1,37 +1,16 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    exec.py                                            :+:      :+:    :+:    #
+#    kata00.py                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/03 08:32:50 by isojo-go          #+#    #+#              #
-#    Updated: 2023/02/03 09:17:51 by isojo-go         ###   ########.fr        #
+#    Created: 2023/02/03 16:20:56 by isojo-go          #+#    #+#              #
+#    Updated: 2023/02/03 16:27:10 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-import sys
+# Put this at the top of your kata00.py file
+kata = (19, 42, 21)
 
-if (len(sys.argv) >= 2):
-	# string = sys.argv[1]
-	# i = 2
-	# while (i < len(sys.argv)):
-	# 	string += ' '
-	# 	string += sys.argv[i]
-	# 	i += 1
-
-	string = " ".join(sys.argv[1::])
-
-	# rev = ''
-	# i = len(string) - 1
-	# while (i >= 0):
-	# 	if (string[i].islower()):
-	# 		rev += string[i].upper()
-	# 	else:
-	# 		rev += string[i].lower()
-	# 	i -= 1
-
-	rev = string[::-1].swapcase()
-
-	print(rev)
-	
+print(f"The {len(kata)} numbers are: %s" % (kata, ))

@@ -1,37 +1,28 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    exec.py                                            :+:      :+:    :+:    #
+#    whois.py                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/03 08:32:50 by isojo-go          #+#    #+#              #
-#    Updated: 2023/02/03 09:17:51 by isojo-go         ###   ########.fr        #
+#    Created: 2023/02/03 09:24:35 by isojo-go          #+#    #+#              #
+#    Updated: 2023/02/03 10:05:15 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import sys
 
-if (len(sys.argv) >= 2):
-	# string = sys.argv[1]
-	# i = 2
-	# while (i < len(sys.argv)):
-	# 	string += ' '
-	# 	string += sys.argv[i]
-	# 	i += 1
-
-	string = " ".join(sys.argv[1::])
-
-	# rev = ''
-	# i = len(string) - 1
-	# while (i >= 0):
-	# 	if (string[i].islower()):
-	# 		rev += string[i].upper()
-	# 	else:
-	# 		rev += string[i].lower()
-	# 	i -= 1
-
-	rev = string[::-1].swapcase()
-
-	print(rev)
-	
+if(len(sys.argv) > 2):
+	print("AssertionError: more than one argument are provided")
+elif (len(sys.argv) == 2):
+	try:
+		n = int(sys.argv[1])
+	except:
+		print("AssertionError: argument is not an integer")
+	else:
+		if (n == 0):
+			print("I'm Zero.")
+		elif (n % 2 == 0):
+			print("I'm Even.")
+		else:
+			print("I'm Odd.")
