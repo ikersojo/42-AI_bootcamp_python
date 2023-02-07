@@ -6,35 +6,11 @@
 #    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 09:15:13 by isojo-go          #+#    #+#              #
-#    Updated: 2023/02/04 12:43:57 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/02/07 18:26:10 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import sys
-
-sandwich = {
-	"ingredients": ["ham", "bread", "cheese", "tomatoes"],
-	"meal": "lunch",
-	"prep_time": 10
-}
-
-cake = {
-	"ingredients": ["flour", "sugar", "eggs"],
-	"meal": "dessert",
-	"prep_time": 60
-}
-
-salad = {
-	"ingredients": ["avocado", "arugula", "tomatoes", "spinach"],
-	"meal": "lunch",
-	"prep_time": 15
-}
-
-cookbook = {
-	"sandwich": sandwich,
-	"cake": cake,
-	"salad": salad
-}
 
 def add(cookbook):
 	ingr_list = []
@@ -64,9 +40,9 @@ def delete(cookbook):
 	except:
 		print("The recipe does not exist.")
 
-def print_recipe(name):
+def print_recipe(cookbook, name):
 	if (name in cookbook):
-		print(f"Recipe for {name}:")
+		print(f"\nRecipe for {name}:")
 		i = cookbook[name]["ingredients"]
 		m = cookbook[name]["meal"]
 		p = cookbook[name]["prep_time"]
@@ -78,8 +54,8 @@ def print_recipe(name):
 
 def print_all(cookbook):
 	for key, value in cookbook.items():
-		print_recipe(key)
-		print("\n------------------\n")
+		print_recipe(cookbook, key)
+		print("\n------------------")
 
 def print_selection():
 	print("List of available option:")
@@ -89,12 +65,49 @@ def print_selection():
 	print("4: Print the cookbook")
 	print("5: Quit\n")
 	print("Please select an option:")
-	return (int(input(">> ")))
+	selection = input(">> ")
+	try:
+		return (int(selection))
+	except:
+		return (0)
 
 if (__name__ == "__main__"):
+	sandwich = {
+		"ingredients": ["ham", "bread", "cheese", "tomatoes"],
+		"meal": "lunch",
+		"prep_time": 10
+	}
+	cake = {
+		"ingredients": ["flour", "sugar", "eggs"],
+		"meal": "dessert",
+		"prep_time": 60
+	}
+	salad = {
+		"ingredients": ["avocado", "arugula", "tomatoes", "spinach"],
+		"meal": "lunch",
+		"prep_time": 15
+	}
+	cookbook = {
+		"sandwich": sandwich,
+		"cake": cake,
+		"salad": salad
+	}
 	opt = 0
-	opt_list = (1, 2, 3, 4, 5)
+
 	print("Welcome to the Python Cookbook !")
 	while (opt != 5):
-		opt = print_selection
-		if (opt in  opt_list):
+		opt = print_selection()
+		print()
+		if (opt == 1):
+			add(cookbook)
+		elif (opt == 2):
+			delete(cookbook)
+		elif (opt == 3):
+			name = input("Please enter a recipe name to get its details:\n>>> ")
+			print_recipe(cookbook, name)
+		elif (opt == 4):
+			print_all(cookbook)
+		elif (opt != 5):
+			print("Sorry, this option does not exist.")
+		print()
+	print("Cookbook closed. Goodbye !")
