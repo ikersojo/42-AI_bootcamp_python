@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    recipe.py                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+         #
+#    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:39:55 by isojo-go          #+#    #+#              #
-#    Updated: 2023/02/10 11:04:50 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/02/12 20:44:48 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,13 @@
 
 class Recipe:
 	'''Recipe Class. Recipe(name, lvl, time, ingredients, type, description)'''
+	name = str
+	lvl = int
+	time = int
+	ingr = [str]
+	type = str
+	descr = str
+
 	def __init__(self, name, lvl, time, ingr, type, descr = 'Not available.'):
 		self.name = name
 		self.lvl = lvl
@@ -70,4 +77,3 @@ if (__name__ == '__main__'):
 	test3.print_recipe()
 	test4 = Recipe("test4", 3, 60, ["asd", "zxc", "wer"], "starter")
 	test4.print_recipe()
-	

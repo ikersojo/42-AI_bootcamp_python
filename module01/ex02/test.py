@@ -3,97 +3,104 @@
 #                                                         :::      ::::::::    #
 #    test.py                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+         #
+#    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 15:33:21 by isojo-go          #+#    #+#              #
-#    Updated: 2023/02/10 16:06:26 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/02/20 22:36:13 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-print("\033[0m Column vector of shape n * 1\033[0m\033[0m")
+from vector import Vector
 
-v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
-v2 = v1 * 5
-print(v2)
+if(__name__ == "__main__"):
+	print("\033[33mStarting test:\033[0m")
 
-print("\033[0m Expected output:\033[0m\033[0m")
-print("\033[0m Vector([[0.0], [5.0], [10.0], [15.0]])\033[0m")
-print("\033[0m Row vector of shape 1 * n\033[0m")
+	# Checking Vector class assignation:
+	print("\n\033[33m    - Checking Vector class assignation:\033[0m")
+	v1 = Vector([[0.0, 1.0, 2.0, 3.0]])
+	v2 = Vector([[1.0], [1.0], [1.0], [1.0]])
+	print (v1.values, v1.shape)
+	print (v2.values, v2.shape)
+	v10 = Vector(3)
+	v11 = Vector((10, 16))
+	print (v10.values, v10.shape)
+	print (v11.values, v11.shape)
 
-v1 = Vector([[0.0, 1.0, 2.0, 3.0]])
-v2 = v1 * 5
-print(v2)
+	# Checking dot method:
+	print("\n\033[33m    - Checking dot method:\033[0m")
+	v3 = Vector([[0.0, 1.0, 2.0, 3.0]])
+	v4 = Vector([[1.0], [1.0], [1.0], [1.0]])
+	print(v1.dot(v3))
+	print(v2.dot(v4))
 
+	# Checking Transpose method:
+	print("\n\033[33m    - Checking Transpose method:\033[0m")
+	print (v1.values, v1.shape)
+	vx = v1.T()
+	print (vx.values, vx.shape)
+	print("-----------")
+	print (v2.values, v2.shape)
+	vz = v2.T()
+	print (vz.values, vz.shape)
 
-print("\033[0m Expected output\033[0m")
-print("\033[0m Vector([[0.0, 5.0, 10.0, 15.0]])\033[0m")
+	# Checking addition method:
+	print("\n\033[33m    - Checking addition method:\033[0m")
+	print (v1.values, v1.shape)
+	print (v3.values, v3.shape)
+	vy = v1 + v3
+	print (vy.values, vy.shape)
+	print("-----------")
+	print (v2.values, v2.shape)
+	print (v4.values, v4.shape)
+	va = v2 + v4
+	print (va.values, va.shape)
+	print("-----------")
+	vb = v1 + v2
 
-v2 = v1 / 2.0
-print(v2)
+	# Checking substraction method:
+	print("\n\033[33m    - Checking substraction method:\033[0m")
+	print (v1.values, v1.shape)
+	print (v3.values, v3.shape)
+	vys = v1 - v3
+	print (vys.values, vys.shape)
+	print("-----------")
+	print (v2.values, v2.shape)
+	print (v4.values, v4.shape)
+	vas = v2 - v4
+	print (vas.values, vas.shape)
+	print("-----------")
+	vbs = v1 - v2
 
-print("\033[0m Expected output\033[0m")
-print("\033[0m Vector([[0.0], [0.5], [1.0], [1.5]])\033[0m")
+	# Checking multiplication method:
+	print("\n\033[33m    - Checking multiplication method:\033[0m")
+	print (v1.values, v1.shape)
+	vym = v1 * 5
+	print (vym.values, vym.shape)
+	print("-----------")
+	print (v2.values, v2.shape)
+	vam = v2 * 3
+	print (vam.values, vam.shape)
+	print("-----------")
+	print (v1.values, v1.shape)
+	print (v3.values, v3.shape)
+	try:
+		vbm = v1 * v3
+	except:
+		print("Error")
 
-v1 / 0.0
-
-print("\033[0m Expected ouput\033[0m")
-print("\033[0m ZeroDivisionError: division by zero.\033[0m")
-
-2.0 / v1
-
-print("\033[0m Expected output:\033[0m")
-print("\033[0m NotImplementedError: Division of a scalar by a Vector is not defined here.\033[0m")
-print("\033[0m Column vector of shape (n, 1)\033[0m")
-print("Vector([[0.0], [1.0], [2.0], [3.0]]).shape")
-print("\033[0m Expected output\033[0m")
-print("\033[0m (4,1)\033[0m")
-print("Vector([[0.0], [1.0], [2.0], [3.0]]).values")
-print("\033[0m Expected output\033[0m")
-print("\033[0m [[0.0], [1.0], [2.0], [3.0]]\033[0m")
-print("\033[0m Row vector of shape (1, n)\033[0m")
-print("Vector([[0.0, 1.0, 2.0, 3.0]]).shape")
-print("\033[0m Expected output\033[0m")
-print("\033[0m (1,4)\033[0m")
-print("Vector([[0.0, 1.0, 2.0, 3.0]]).values")
-print("\033[0m Expected output\033[0m")
-print("\033[0m [[0.0, 1.0, 2.0, 3.0]]\033[0m")
-print("\033[0m Example 1:\033[0m")
-
-v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
-print(v1.shape)
-print("\033[0m Expected output:\033[0m")
-(4,1)
-print(v1.T())
-print("\033[0m Expected output:\033[0m")
-print("\033[0m Vector([[0.0, 1.0, 2.0, 3.0]])\033[0m")
-print(v1.T().shape)
-print("\033[0m Expected output:\033[0m")
-print("\033[0m (1,4)\033[0m")
-print("\033[0m Example 2:\033[0m")
-v2 = Vector([[0.0, 1.0, 2.0, 3.0]])
-print(v2.shape)
-print("\033[0m Expected output:\033[0m")
-print("\033[0m (1,4)\033[0m")
-print(v2.T())
-print("\033[0m Expected output:\033[0m")
-print("\033[0m Vector([[0.0], [1.0], [2.0], [3.0]])\033[0m")
-print(v2.T().shape)
-print("\033[0m Expected output:\033[0m")
-print("\033[0m (4,1)\033[0m")
-print("\033[0m Example 1:\033[0m")
-v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
-v2 = Vector([[2.0], [1.5], [2.25], [4.0]])
-print(v1.dot(v2))
-print("\033[0m Expected output:\033[0m")
-print("\033[0m 18.0\033[0m")
-v3 = Vector([[1.0, 3.0]])
-v4 = Vector([[2.0, 4.0]])
-print(v3.dot(v4))
-print("\033[0m Expected output:\033[0m")
-print("\033[0m 13.0\033[0m")
-v1
-print("\033[0m Expected output: to see what __repr__() should do\033[0m")
-print("\033[0m [[0.0, 1.0, 2.0, 3.0]]\033[0m")
-print(v1)
-print("\033[0m Expected output: to see what __str__() should do\033[0m")
-print("\033[0m [[0.0, 1.0, 2.0, 3.0]]\033[0m")
+	# Checking division method:
+	print("\n\033[33m    - Checking division method:\033[0m")
+	print (v1.values, v1.shape)
+	vym = v1 / 5
+	print (vym.values, vym.shape)
+	print("-----------")
+	print (v2.values, v2.shape)
+	vam = v2 / 2
+	print (vam.values, vam.shape)
+	print("-----------")
+	print (v1.values, v1.shape)
+	print (v3.values, v3.shape)
+	try:
+		vbm = v1 / v3
+	except:
+		print("Error")
