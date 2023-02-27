@@ -20,4 +20,10 @@ def ft_filter(function_to_apply, iterable):
 		An iterable.
 		None if the iterable can not be used by the function.
 	'''
-	# ... Your code here ...
+	if not callable(function_to_apply):
+		raise TypeError("Function is not callable.")
+	if not hasattr(iterable, '__iter__'):
+		raise TypeError("Argument is not iterable.")
+	for i in iterable:
+		i = function_to_apply(i)
+	return (iterable)
