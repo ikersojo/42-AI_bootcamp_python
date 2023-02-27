@@ -6,7 +6,7 @@
 #    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 11:57:22 by isojo-go          #+#    #+#              #
-#    Updated: 2023/02/22 12:05:23 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/02/27 18:51:41 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,5 @@ def ft_map(function_to_apply, iterable):
 		raise TypeError("Function is not callable.")
 	if not hasattr(iterable, '__iter__'):
 		raise TypeError("Argument is not iterable.")
-	for i in iterable, res:
-		res = function_to_apply(i)
-	return (res)
+	for i in iterable:
+		yield function_to_apply(i)
