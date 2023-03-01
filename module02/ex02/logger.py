@@ -12,10 +12,14 @@ def log(func):
 		else:
 			ellapsed = f"[ exec-time {(ellapsed_t):.3f} s ]"
 		user = os.environ['USER']
-		task = func.__name__.replace('_', ' ').title() + '\t'
-		if (len(func.__name__) < 12):
-			task = task + '\t'
-		print(f"({user})Running: {task} {ellapsed}")
+		task = func.__name__.replace('_', ' ').title()
+		length = 20 - 1 - len(task) - 1
+		for i in range(0, length):
+			task += ' '
+		log = (f"({user})Running: {task} {ellapsed}\n")
+		file = open('machine.log', 'a')
+		file.write(log)
+		file.close
 		return run
 	return log_decorator
 
