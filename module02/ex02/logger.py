@@ -4,9 +4,19 @@ import os
 
 def log(func):
 	def log_decorator(*args, **kwargs):
-		start = time.time()
-		print("logging...")
-		return func(*args, **kwargs)
+		start_t = time.time()
+		run = func(*args, **kwargs)
+		ellapsed_t = time.time() - start_t
+		if (ellapsed_t < 1.0):
+			ellapsed = f"[ exec-time {(ellapsed_t * 1000):.3f} ms ]"
+		else:
+			ellapsed = f"[ exec-time {(ellapsed_t):.3f} s ]"
+		user = os.environ['USER']
+		task = func.__name__.replace('_', ' ').title() + '\t'
+		if (len(func.__name__) < 12):
+			task = task + '\t'
+		print(f"({user})Running: {task} {ellapsed}")
+		return run
 	return log_decorator
 
 class CoffeeMachine():
