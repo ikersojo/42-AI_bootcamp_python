@@ -10,16 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
+from math import sqrt
+
 class TinyStatistician:
+	def check_lst(func):
+		def decorator(*args, **kwargs):
+			lst = args[1]
+			if not lst:
+				return None
+			return func(*args, **kwargs)
+		return decorator
+
+	@check_lst
 	def mean(self, lst):
 		sum = 0
 		for i in lst:
 			sum += i
 		return ((sum* 1.0) / len(lst))
-	
+
+	@check_lst
 	def median(self, lst):
-		if not lst:
-			return None
 		lst = sorted(lst)
 		n = len(lst)
 		if n % 2 == 0:
@@ -30,6 +40,7 @@ class TinyStatistician:
 			index = n // 2
 			return float(lst[index])
 
+	@check_lst
 	def quartile(self, lst):
 		lst = sorted(lst)
 		q1_index = int(len(lst) * 0.25)
@@ -43,19 +54,35 @@ class TinyStatistician:
 		res =[float(q1), float(q3)]
 		return res
 
+	@check_lst
+	def var(self, lst):
+		lst = sorted(lst)
+		med = self.mean(lst)
+		sum = 0
+		for i in lst:
+			sum += (i - med)**2
+		return sum/len(lst)
 
-	
+	@check_lst
+	def std(self, lst):
+		res = sqrt(self.var(lst))
+		return res
+
+
 if __name__ == '__main__':
-	tstat = TinyStatistician()
 	a = [1, 42, 300, 10, 59]
+	b =[]
+	tstat = TinyStatistician()
 
+	print(tstat.mean(b))
+	print("      --> Expected result: None")
 	print(tstat.mean(a))
 	print("      --> Expected result: 82.4")
 	print(tstat.median(a))
 	print("      --> Expected result: 42.0")
 	print(tstat.quartile(a))
 	print("      --> Expected result: [10.0, 59.0]")
-	# print(tstat.var(a))
-	# print("      --> Expected result: 12279.439999999999")
-	# print(tstat.std(a))
-	# print("      --> Expected result: 110.81263465868862")
+	print(tstat.var(a))
+	print("      --> Expected result: 12279.439999999999")
+	print(tstat.std(a))
+	print("      --> Expected result: 110.81263465868862")
